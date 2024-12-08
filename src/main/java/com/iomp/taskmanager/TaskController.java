@@ -9,7 +9,7 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/api/tasks")
-@CrossOrigin(origins = "http://localhost:3000") // Adjust origin based on frontend location
+@CrossOrigin(origins = "*") // Adjust origin based on frontend location
 public class TaskController {
     boolean backtrack(HashMap<Integer,List<Integer>> hm,HashMap<Integer,Task> taskinf,HashMap<Integer,Integer> indegree,LocalDate curdate,HashSet<Integer> hs,List<Task> res){
 
@@ -30,7 +30,7 @@ public class TaskController {
                     if(indegree.get(j)==0) hs.remove(j);
                     indegree.put(j,indegree.get(j)+1);
                 }
-                res.removeLast();
+                res.remove(res.size() - 1);
             }
         }
         return false;
